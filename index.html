@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CoviBlock Extreme Simulator</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background-color: black;
+      color: red;
+      font-family: monospace;
+      text-align: center;
+      overflow: hidden;
+      user-select: none;
+      cursor: none;
+    }
+
+    #content {
+      margin-top: 15vh;
+    }
+
+    h1 {
+      font-size: 3em;
+    }
+
+    p {
+      font-size: 1.3em;
+      margin: 10px auto;
+      max-width: 700px;
+    }
+
+    input, button {
+      padding: 10px;
+      font-size: 1em;
+      margin-top: 15px;
+    }
+
+    #countdown {
+      font-size: 1.5em;
+      margin-top: 20px;
+      color: yellow;
+    }
+
+    #error-msg {
+      color: orange;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body onload="startSim()">
+  <audio autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mp3">
+  </audio>
+
+  <div id="content">
+    <h1>💀 HACKER EPEP MERETAS DATA ANDA WKWKW DONE TEBUS DANA 1JT! 💀</h1>
+    <p>Send 0.01 BTC to the address:</p>
+    <p><code>halo manuasia bodoh kena virus ransomware</code></p>
+    <div id="countdown">Time left: 00:10:00</div>
+
+    <input id="unlockKey" placeholder="Enter Unlock Key">
+    <br>
+    <button onclick="checkKey()">UNLOCK</button>
+
+    <p id="error-msg">❌ Wrong Key! System Will Be Wiped Soon!</p>
+  </div>
+
+  <script>
+    function startSim() {
+      requestFullScreen();
+      preventClose();
+      blockInput();
+      flashBackground();
+      moveMouseRandom();
+      startCountdown(600);
+      alert("⚠️ Your system is locked. This is a ransomware simulation.");
+    }
+
+    function requestFullScreen() {
+      let elem = document.documentElement;
+      elem.requestFullscreen?.();
+    }
+
+    function checkKey() {
+      const key = document.getElementById("unlockKey").value.trim();
+      const msg = document.getElementById("error-msg");
+      if (key === "done masv1") {
+        alert("✅ Key accepted. Your files are safe.");
+        location.reload();
+      } else {
+        msg.style.display = "block";
+        setTimeout(() => msg.style.display = "none", 3000);
+      }
+    }
+
+    function startCountdown(seconds) {
+      const el = document.getElementById("countdown");
+      const interval = setInterval(() => {
+        const m = String(Math.floor(seconds / 60)).padStart(2, '0');
+        const s = String(seconds % 60).padStart(2, '0');
+        el.textContent = `Time left: ${m}:${s}`;
+        if (seconds-- <= 0) {
+          clearInterval(interval);
+          el.textContent = "⛔ Time's up! Files Deleted!";
+          document.body.style.backgroundColor = "darkred";
+        }
+      }, 1000);
+    }
+
+    function flashBackground() {
+      setInterval(() => {
+        document.body.style.backgroundColor =
+          document.body.style.backgroundColor === 'black' ? 'darkred' : 'black';
+      }, 500);
+    }
+
+    function preventClose() {
+      document.addEventListener("keydown", (e) => {
+        if (["F12", "F11", "Escape"].includes(e.key) || (e.ctrlKey && ["w", "r", "t"].includes(e.key.toLowerCase()))) {
+          e.preventDefault();
+        }
+      });
+
+      window.oncontextmenu = () => false;
+    }
+
+    function blockInput() {
+      window.addEventListener('beforeunload', (e) => {
+        e.preventDefault();
+        e.returnValue = '';
+      });
+    }
+
+    function moveMouseRandom() {
+      const fakeCursor = document.createElement('div');
+      fakeCursor.style.position = 'absolute';
+      fakeCursor.style.width = '20px';
+      fakeCursor.style.height = '20px';
+      fakeCursor.style.background = 'red';
+      fakeCursor.style.borderRadius = '50%';
+      fakeCursor.style.zIndex = 9999;
+      document.body.appendChild(fakeCursor);
+
+      setInterval(() => {
+        fakeCursor.style.left = Math.random() * window.innerWidth + 'px';
+        fakeCursor.style.top = Math.random() * window.innerHeight + 'px';
+      }, 300);
+    }
+  </script>
+</body>
+</html>
